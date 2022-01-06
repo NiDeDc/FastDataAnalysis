@@ -50,6 +50,7 @@
     </property>
     <addaction name="action_dataload"/>
     <addaction name="action_filter"/>
+    <addaction name="action_export"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -86,6 +87,11 @@
   <action name="action_stft">
    <property name="text">
     <string>短时傅里叶</string>
+   </property>
+  </action>
+  <action name="action_export">
+   <property name="text">
+    <string>数据导出</string>
    </property>
   </action>
  </widget>
@@ -171,6 +177,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>action_export</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>HandlerExport()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>545</x>
+     <y>423</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>HandlerLoad()</slot>
@@ -178,5 +200,6 @@
   <slot>HandlerDrawTime()</slot>
   <slot>HandlerWaterFall()</slot>
   <slot>HandlerSTFT()</slot>
+  <slot>HandlerExport()</slot>
  </slots>
 </ui>

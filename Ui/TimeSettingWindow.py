@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog_time_setting(object):
     def setupUi(self, Dialog_time_setting):
         Dialog_time_setting.setObjectName("Dialog_time_setting")
-        Dialog_time_setting.resize(247, 315)
+        Dialog_time_setting.resize(247, 263)
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog_time_setting)
         self.verticalLayout.setObjectName("verticalLayout")
         self.comboBox_channel = QtWidgets.QComboBox(Dialog_time_setting)

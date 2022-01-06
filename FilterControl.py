@@ -1,6 +1,5 @@
 from Ui.FilterWindow import Ui_Dialog_filter
 from PyQt5 import QtWidgets
-import numpy as np
 from PyQt5.QtCore import pyqtSignal
 from scipy import signal as sig
 

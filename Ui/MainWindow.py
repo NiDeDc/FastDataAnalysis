@@ -46,8 +46,11 @@ class Ui_MainWindow(object):
         self.action_waterfall.setObjectName("action_waterfall")
         self.action_stft = QtWidgets.QAction(MainWindow)
         self.action_stft.setObjectName("action_stft")
+        self.action_export = QtWidgets.QAction(MainWindow)
+        self.action_export.setObjectName("action_export")
         self.menu.addAction(self.action_dataload)
         self.menu.addAction(self.action_filter)
+        self.menu.addAction(self.action_export)
         self.menu_2.addAction(self.action_time)
         self.menu_2.addAction(self.action_waterfall)
         self.menu_2.addAction(self.action_stft)
@@ -60,6 +63,7 @@ class Ui_MainWindow(object):
         self.action_time.triggered.connect(MainWindow.HandlerDrawTime)
         self.action_waterfall.triggered.connect(MainWindow.HandlerWaterFall)
         self.action_stft.triggered.connect(MainWindow.HandlerSTFT)
+        self.action_export.triggered.connect(MainWindow.HandlerExport)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -72,3 +76,4 @@ class Ui_MainWindow(object):
         self.action_time.setText(_translate("MainWindow", "多通道时域图"))
         self.action_waterfall.setText(_translate("MainWindow", "瀑布图"))
         self.action_stft.setText(_translate("MainWindow", "短时傅里叶"))
+        self.action_export.setText(_translate("MainWindow", "数据导出"))

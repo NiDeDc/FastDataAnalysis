@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog_Export(object):
     def setupUi(self, Dialog_Export):
         Dialog_Export.setObjectName("Dialog_Export")
-        Dialog_Export.resize(174, 312)
+        Dialog_Export.resize(174, 72)
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog_Export)
         self.verticalLayout.setObjectName("verticalLayout")
         self.widget = QtWidgets.QWidget(Dialog_Export)
@@ -33,4 +33,4 @@ class Ui_Dialog_Export(object):
 
     def retranslateUi(self, Dialog_Export):
         _translate = QtCore.QCoreApplication.translate
-        Dialog_Export.setWindowTitle(_translate("Dialog_Export", "Dialog"))
+        Dialog_Export.setWindowTitle(_translate("Dialog_Export", "数据导出"))
