@@ -36,7 +36,11 @@ class LoadDataControl(QtWidgets.QDialog, Ui_Dialog_Dataload):
                 single_data = LoadSingleFile(path[i])
                 if single_data is not None:
                     if joint_data is not None:
-                        joint_data = np.hstack((joint_data, single_data))
+                        if joint_data.shape[0] == single_data.shape[0]:
+                            joint_data = np.hstack((joint_data, single_data))
+                        else:
+                            joint_data = None
+                            break
                     else:
                         joint_data = single_data
                 else:
