@@ -24,6 +24,7 @@ class Ui_Dialog_filter(object):
         self.comboBox_filter = QtWidgets.QComboBox(Dialog_filter)
         self.comboBox_filter.setObjectName("comboBox_filter")
         self.comboBox_filter.addItem("")
+        self.comboBox_filter.addItem("")
         self.gridLayout.addWidget(self.comboBox_filter, 0, 1, 1, 1)
         self.label_2 = QtWidgets.QLabel(Dialog_filter)
         self.label_2.setObjectName("label_2")
@@ -41,6 +42,7 @@ class Ui_Dialog_filter(object):
         self.retranslateUi(Dialog_filter)
         self.buttonBox.accepted.connect(Dialog_filter.accept)
         self.buttonBox.rejected.connect(Dialog_filter.reject)
+        self.comboBox_filter.currentIndexChanged['int'].connect(Dialog_filter.IndexChanged)
         QtCore.QMetaObject.connectSlotsByName(Dialog_filter)
 
     def retranslateUi(self, Dialog_filter):
@@ -48,4 +50,5 @@ class Ui_Dialog_filter(object):
         Dialog_filter.setWindowTitle(_translate("Dialog_filter", "滤波窗口"))
         self.label.setText(_translate("Dialog_filter", "滤波选择："))
         self.comboBox_filter.setItemText(0, _translate("Dialog_filter", "巴特沃斯高通"))
+        self.comboBox_filter.setItemText(1, _translate("Dialog_filter", "差分信号"))
         self.label_2.setText(_translate("Dialog_filter", "频率选择"))

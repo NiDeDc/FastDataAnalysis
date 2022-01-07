@@ -2,6 +2,7 @@ from Ui.FilterWindow import Ui_Dialog_filter
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import pyqtSignal
 from scipy import signal as sig
+import numpy as np
 
 
 class FilterControl(QtWidgets.QDialog, Ui_Dialog_filter):
@@ -12,9 +13,17 @@ class FilterControl(QtWidgets.QDialog, Ui_Dialog_filter):
         self.setupUi(self)
         self.out_data = None
 
+    def IndexChanged(self, index):
+        if index == 0:
+            self.label_2.setText('频率选择')
+        elif index == 1:
+            self.label_2.setText('差分次数')
+
     def ExecuteFiltering(self, data):
         if self.comboBox_filter.currentIndex() == 0:
             self.ButterworthHighpass(data, self.spinBox_freq.value())
+        elif self.comboBox_filter.currentIndex() == 1:
+            self.DiffSignal(data, self.spinBox_freq.value())
         self.finish.emit()
 
     # def ButterworthHighpass(self, data, freq):
@@ -34,3 +43,6 @@ class FilterControl(QtWidgets.QDialog, Ui_Dialog_filter):
         wn = 2 * freq / 1000
         b, a = sig.butter(3, wn, 'highpass')  # 配置滤波器 3 表示滤波器的阶数
         self.out_data = sig.filtfilt(b, a, data)
+
+    def DiffSignal(self, data, times):
+        self.out_data = np.diff(data, times, axis=1)

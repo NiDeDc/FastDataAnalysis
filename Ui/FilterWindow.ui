@@ -34,6 +34,11 @@
        <string>巴特沃斯高通</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>差分信号</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="1" column="0">
@@ -71,8 +76,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>172</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -87,8 +92,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>172</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -96,5 +101,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>comboBox_filter</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>Dialog_filter</receiver>
+   <slot>IndexChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>6</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>IndexChanged(int)</slot>
+ </slots>
 </ui>
