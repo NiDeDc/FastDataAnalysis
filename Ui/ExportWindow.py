@@ -15,6 +15,9 @@ class Ui_Dialog_Export(object):
     def setupUi(self, Dialog_Export):
         Dialog_Export.setObjectName("Dialog_Export")
         Dialog_Export.resize(174, 72)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon/导出.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Dialog_Export.setWindowIcon(icon)
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog_Export)
         self.verticalLayout.setObjectName("verticalLayout")
         self.widget = QtWidgets.QWidget(Dialog_Export)
@@ -34,3 +37,4 @@ class Ui_Dialog_Export(object):
     def retranslateUi(self, Dialog_Export):
         _translate = QtCore.QCoreApplication.translate
         Dialog_Export.setWindowTitle(_translate("Dialog_Export", "数据导出"))
+import Ui.qrc_rc

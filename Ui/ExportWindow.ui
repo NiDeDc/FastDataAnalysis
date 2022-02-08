@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>数据导出</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="qrc.qrc">
+    <normaloff>:/icon/导出.png</normaloff>:/icon/导出.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QWidget" name="widget" native="true"/>
@@ -29,7 +33,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="qrc.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

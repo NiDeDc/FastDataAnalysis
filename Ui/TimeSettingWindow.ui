@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>绘图选项</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="qrc.qrc">
+    <normaloff>:/icon/线形图.png</normaloff>:/icon/线形图.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QComboBox" name="comboBox_channel"/>
@@ -36,7 +40,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="qrc.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

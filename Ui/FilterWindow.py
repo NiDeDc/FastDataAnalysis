@@ -16,6 +16,9 @@ class Ui_Dialog_filter(object):
         Dialog_filter.setObjectName("Dialog_filter")
         Dialog_filter.resize(182, 93)
         Dialog_filter.setMaximumSize(QtCore.QSize(182, 93))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon/工具-滤波.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Dialog_filter.setWindowIcon(icon)
         self.gridLayout = QtWidgets.QGridLayout(Dialog_filter)
         self.gridLayout.setObjectName("gridLayout")
         self.label = QtWidgets.QLabel(Dialog_filter)
@@ -52,3 +55,4 @@ class Ui_Dialog_filter(object):
         self.comboBox_filter.setItemText(0, _translate("Dialog_filter", "巴特沃斯高通"))
         self.comboBox_filter.setItemText(1, _translate("Dialog_filter", "差分信号"))
         self.label_2.setText(_translate("Dialog_filter", "频率选择"))
+import Ui.qrc_rc

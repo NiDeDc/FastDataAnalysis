@@ -15,6 +15,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1092, 848)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon/数据分析.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -77,3 +80,4 @@ class Ui_MainWindow(object):
         self.action_waterfall.setText(_translate("MainWindow", "瀑布图"))
         self.action_stft.setText(_translate("MainWindow", "短时傅里叶"))
         self.action_export.setText(_translate("MainWindow", "数据导出"))
+import Ui.qrc_rc

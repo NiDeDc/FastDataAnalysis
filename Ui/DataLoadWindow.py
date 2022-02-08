@@ -15,6 +15,9 @@ class Ui_Dialog_Dataload(object):
     def setupUi(self, Dialog_Dataload):
         Dialog_Dataload.setObjectName("Dialog_Dataload")
         Dialog_Dataload.resize(240, 67)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon/数据加载.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Dialog_Dataload.setWindowIcon(icon)
         self.gridLayout = QtWidgets.QGridLayout(Dialog_Dataload)
         self.gridLayout.setObjectName("gridLayout")
         self.label = QtWidgets.QLabel(Dialog_Dataload)
@@ -40,3 +43,4 @@ class Ui_Dialog_Dataload(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog_Dataload.setWindowTitle(_translate("Dialog_Dataload", "数据加载"))
         self.label.setText(_translate("Dialog_Dataload", "通道数量："))
+import Ui.qrc_rc

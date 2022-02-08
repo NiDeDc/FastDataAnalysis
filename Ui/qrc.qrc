@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>线形图.png</file>
+    <file>导出.png</file>
+    <file>工具-滤波.png</file>
+    <file>数据加载.png</file>
+    <file>数据分析.ico</file>
+  </qresource>
+</RCC>

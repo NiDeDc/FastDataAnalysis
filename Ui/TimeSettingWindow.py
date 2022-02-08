@@ -15,6 +15,9 @@ class Ui_Dialog_time_setting(object):
     def setupUi(self, Dialog_time_setting):
         Dialog_time_setting.setObjectName("Dialog_time_setting")
         Dialog_time_setting.resize(247, 263)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon/线形图.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Dialog_time_setting.setWindowIcon(icon)
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog_time_setting)
         self.verticalLayout.setObjectName("verticalLayout")
         self.comboBox_channel = QtWidgets.QComboBox(Dialog_time_setting)
@@ -39,3 +42,4 @@ class Ui_Dialog_time_setting(object):
     def retranslateUi(self, Dialog_time_setting):
         _translate = QtCore.QCoreApplication.translate
         Dialog_time_setting.setWindowTitle(_translate("Dialog_time_setting", "绘图选项"))
+import Ui.qrc_rc

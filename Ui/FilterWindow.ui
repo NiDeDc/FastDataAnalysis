@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>滤波窗口</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="qrc.qrc">
+    <normaloff>:/icon/工具-滤波.png</normaloff>:/icon/工具-滤波.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QLabel" name="label">
@@ -67,7 +71,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="qrc.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>
