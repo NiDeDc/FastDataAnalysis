@@ -9,7 +9,6 @@ from FilterControl import FilterControl
 from TimeSettingControl import TimeSettingControl as tsc
 from WaitingControl import WaitingControl
 from ExportControl import ExportControl
-import ExportControl as Epc
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):

@@ -4,10 +4,14 @@ from scipy import signal as sig
 
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
+figure = 1
 
 
 def DrawTimeDomains(data, sensor):
+    global figure
     col = len(data)
+    ff = plt.figure("fig" + str(figure))
+    figure += 1
     for i in range(col):
         row = len(sensor[i][1])
         for j in range(0, row):
@@ -24,27 +28,33 @@ def DrawTimeDomains(data, sensor):
     # plt.get_current_fig_manager().window.state('zoomed')
     plt.subplots_adjust(left=0.04, bottom=0.05, right=0.98, top=0.93, wspace=0.2, hspace=0.5)
     # plt.tight_layout(rect=(0, 0, 1, 0.5))  # 使子图标题和全局标题与坐标轴不重叠
-    plt.show()
+    ff.show()
 
 
 def DrawWaterFall(data):
+    global figure
+    ff = plt.figure("fig" + str(figure))
+    figure += 1
     plt.suptitle('瀑布图')
     source = abs(np.array(data).T)
     plt.imshow(source, cmap='turbo', aspect='auto')
     plt.colorbar()
     # plt.get_current_fig_manager().window.state('zoomed')
     # plt.subplots_adjust(left=0.04, bottom=None, right=0.96, top=None, wspace=None, hspace=0.5)
-    plt.show()
+    ff.show()
 
 
 def DrawSTFT(data, freq, index):
+    global figure
     sample = data[index]
     f, t, z = sig.stft(sample, window='hann', fs=freq, nperseg=5000)
     result_z = 20 * np.log10(abs(z))
+    ff = plt.figure("fig" + str(figure))
+    figure += 1
     plt.pcolormesh(t, f[0:int(len(f) * 0.1)], result_z[0:int(len(f) * 0.1), :], cmap='jet')
     # plt.figure()
     plt.title(str(index) + '#光栅频率响应')
     plt.ylabel('频率[Hz]')
     plt.xlabel('时间[s]')
     plt.colorbar()
-    plt.show()
+    ff.show()

@@ -2,6 +2,7 @@ from Ui.ExportWindow import Ui_Dialog_Export
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtCore import pyqtSignal
+import numpy
 
 
 class ExportControl(QtWidgets.QDialog, Ui_Dialog_Export):
@@ -83,5 +84,7 @@ class ExportControl(QtWidgets.QDialog, Ui_Dialog_Export):
             file_name = 'S' + str(top) + '-' + str(bottom) + '_' + 'T' + str(left) + '-' + str(right) + '_' + "P" \
                         + str(bottom - top + 1) + '_'
             data_s = data[top - 1:bottom, left - 1:right].T
+            if data_s.dtype != numpy.dtype('float32'):
+                data_s = data_s.astype('float32')
             data_s.tofile(file_name + '.bin')
         self.finish.emit()

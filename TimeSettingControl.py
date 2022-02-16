@@ -6,7 +6,7 @@ class TimeSettingControl(QtWidgets.QDialog, Ui_Dialog_time_setting):
     def __init__(self, ch_num):
         super(TimeSettingControl, self).__init__()
         self.setupUi(self)
-        self.items = [None] * 3
+        self.items = [None] * ch_num
         self.group = []
         sensor_num = 3
         for i in range(0, ch_num):
