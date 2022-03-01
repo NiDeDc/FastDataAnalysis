@@ -4,11 +4,13 @@ import sys
 from LoadDataControl import LoadDataControl
 import PlotControl as Plc
 import threading
+import csv
+import numpy as np
 from DynamicTableWidget import DynamicTableWidget as dtw
-from FilterControl import FilterControl
-from TimeSettingControl import TimeSettingControl as tsc
+# from FilterControl import FilterControl
+# from TimeSettingControl import TimeSettingControl as tsc
 from WaitingControl import WaitingControl
-from ExportControl import ExportControl
+# from ExportControl import ExportControl
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -17,11 +19,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.ldc = LoadDataControl()  # 加载数据窗口
         self.ldc.finish.connect(self.LoadFinish)
-        self.ftc = FilterControl()  # 滤波窗口
-        self.ftc.finish.connect(self.FilterFinish)
+        # self.ftc = FilterControl()  # 滤波窗口
+        # self.ftc.finish.connect(self.FilterFinish)
         self.table = []  # 表格数组
         self.wait = WaitingControl()
         self.is_load = False
+        self.code_data = [None, None, None, None]
+        self.dev = 1
+        self.ch = 1
 
     def HandlerLoad(self):
         if self.ldc.exec() == 1:
@@ -30,18 +35,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.table.clear()
             self.ldc.joint_data.clear()
             self.ldc.is_run.clear()
-            dev = self.ldc.spinBox_2.value()
-            ch = self.ldc.spinBox.value()
+            self.dev = self.ldc.spinBox_2.value()
+            self.ch = self.ldc.spinBox.value()
             file_names = []
-            for i in range(0, dev):
-                for j in range(0, ch):
+            for i in range(0, self.dev):
+                for j in range(0, self.ch):
                     filename = QtWidgets.QFileDialog.getOpenFileNames(self, '设备' + str(i + 1) + '通道' + str(j + 1), ''
                                                                       , 'FLData(*.bin)')[0]
                     if len(filename) == 0:
                         self.ldc.is_run.append(False)
                         break
                     file_names.append(filename)
-                    t = threading.Thread(target=self.ldc.LoadData, args=(filename, i * ch + j))
+                    t = threading.Thread(target=self.ldc.LoadData, args=(filename, i * self.ch + j))
                     self.ldc.is_run.append(True)
                     self.ldc.joint_data.append(None)
                     self.ldc.threads.append(t)
@@ -67,31 +72,71 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     # self.table.append(table_w)
                     # self.tabWidget_tab.addTab(table_w, '通道' + str(i + 1))
                     if all_data[i] is None:
-                        ch = self.ldc.spinBox.value()
-                        reu = divmod(i, ch)
+                        reu = divmod(i, self.ch)
                         QtWidgets.QMessageBox.critical(self, "错误", '仪表' + str(reu[0] + 1) + '通道' + str(reu[1] + 1)
                                                        + "解析错误，请检查文件名和光栅序号是否一致")
-                QtWidgets.QMessageBox.information(self, "提示", '加载成功')
+                # QtWidgets.QMessageBox.information(self, "提示", '加载成功')
 
     def HandlerFilter(self):
-        index = self.tabWidget_tab.currentIndex()
-        if self.ftc.exec() == 1 and len(self.table) > 0:
-            data = self.table[index].data
-            if data is not None:
-                self.wait.show()
-                t = threading.Thread(target=self.ftc.ExecuteFiltering, args=([data]))
-                t.setDaemon(True)
-                t.start()
+        pass
+        # if self.ftc.exec() == 1:
+        #     all_data = self.ldc.joint_data
+        #     for i in range(len(all_data)):
+        #         data = all_data[i]
+        #         if data is not None:
+        #             # self.wait.show()
+        #             t = threading.Thread(target=self.ftc.ExecuteFiltering, args=([data]))
+        #             t.setDaemon(True)
+        #             t.start()
 
     def HandlerCoding(self):
-        pass
+        filename = QtWidgets.QFileDialog.getOpenFileNames(self, '编码文档', '', 'Code(*.csv)')[0]
+        csv_file = open(filename[0], "r")
+        reader = csv.reader(csv_file)
+        all_data = self.ldc.joint_data
+        for item in reader:
+            dev = int(item[2]) - 1
+            ch = int(item[3]) - 1
+            sensor = int(item[4])
+            index = dev * self.ch + ch
+            if item[0] == 'Y1':
+                if self.code_data[0] is None:
+                    self.code_data[0] = all_data[index][sensor]
+                else:
+                    self.code_data[0] = np.vstack((self.code_data[0], all_data[index][sensor]))
+            elif item[0] == 'Y2':
+                if self.code_data[1] is None:
+                    self.code_data[1] = all_data[index][sensor]
+                else:
+                    self.code_data[1] = np.vstack((self.code_data[1], all_data[index][sensor]))
+            elif item[0] == 'Y3':
+                if self.code_data[2] is None:
+                    self.code_data[2] = all_data[index][sensor]
+                else:
+                    self.code_data[2] = np.vstack((self.code_data[2], all_data[index][sensor]))
+            elif item[0] == 'Z3':
+                if self.code_data[3] is None:
+                    self.code_data[3] = all_data[index][sensor]
+                else:
+                    self.code_data[3] = np.vstack((self.code_data[3], all_data[index][sensor]))
+            else:
+                pass
+        table_1 = dtw(0)
+        self.tabWidget_tab.addTab(table_1, 'Y1')
+        table_2 = dtw(1)
+        self.tabWidget_tab.addTab(table_2, 'Y2')
+        table_3 = dtw(2)
+        self.tabWidget_tab.addTab(table_3, 'Y3')
+        table_4 = dtw(3)
+        self.tabWidget_tab.addTab(table_4, 'Z3')
 
     def FilterFinish(self):
-        index = self.tabWidget_tab.currentIndex()
-        self.table[index].clear()
-        self.table[index].data = self.ftc.out_data
-        self.table[index].UpdateData()
-        self.wait.close()
+        pass
+        # index = self.tabWidget_tab.currentIndex()
+        # self.table[index].clear()
+        # self.table[index].data = self.ftc.out_data
+        # self.table[index].UpdateData()
+        # self.wait.close()
 
     # def HandlerDrawTime(self):
     #     c_num = len(self.table)
@@ -114,7 +159,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def HandlerWaterFall(self):
         index = self.tabWidget_tab.currentIndex()
         if index != -1:
-            data = self.table[index].data
+            data = self.code_data[index]
             if data is not None:
                 Plc.DrawWaterFall(data)
 

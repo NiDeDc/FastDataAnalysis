@@ -19,13 +19,10 @@
 <span class="moduletype">Script</span>  <div class="import">
 imports:
     <a href="#DynamicTableWidget">DynamicTableWidget</a>
- &#8226;   <a href="#ExportControl">ExportControl</a>
- &#8226;   <a href="#FilterControl">FilterControl</a>
  &#8226;   <a href="#LoadDataControl">LoadDataControl</a>
  &#8226;   <a href="#PlotControl">PlotControl</a>
  &#8226;   <a href="#PyQt5">PyQt5</a>
  &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
- &#8226;   <a href="#TimeSettingControl">TimeSettingControl</a>
  &#8226;   <a href="#Ui.MainWindow">Ui.MainWindow</a>
  &#8226;   <a href="#WaitingControl">WaitingControl</a>
  &#8226;   <a href="#_bootlocale">_bootlocale</a>
@@ -36,6 +33,7 @@ imports:
  &#8226;   <a href="#collections">collections</a>
  &#8226;   <a href="#collections.abc">collections.abc</a>
  &#8226;   <a href="#copyreg">copyreg</a>
+ &#8226;   <a href="#csv">csv</a>
  &#8226;   <a href="#encodings">encodings</a>
  &#8226;   <a href="#encodings.aliases">encodings.aliases</a>
  &#8226;   <a href="#encodings.ascii">encodings.ascii</a>
@@ -166,6 +164,7 @@ imports:
  &#8226;   <a href="#keyword">keyword</a>
  &#8226;   <a href="#linecache">linecache</a>
  &#8226;   <a href="#locale">locale</a>
+ &#8226;   <a href="#numpy">numpy</a>
  &#8226;   <a href="#operator">operator</a>
  &#8226;   <a href="#pyi_rth__tkinter.py">pyi_rth__tkinter.py</a>
  &#8226;   <a href="#pyi_rth_inspect.py">pyi_rth_inspect.py</a>
@@ -430,7 +429,7 @@ imported by:
   <a target="code" href="" type="text/plain"><tt>'org.python'</tt></a>
 <span class="moduletype">MissingModule</span>  <div class="import">
 imported by:
-    <a href="#copy">copy</a>
+    <a href="#pickle">pickle</a>
  &#8226;   <a href="#setuptools.sandbox">setuptools.sandbox</a>
  &#8226;   <a href="#xml.sax">xml.sax</a>
 
@@ -547,48 +546,6 @@ imported by:
 </div>
 
 <div class="node">
-  <a name="ExportControl"></a>
-  <a target="code" href="///E:/DC%E5%AE%9E%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6/dataanalysis/ExportControl.py" type="text/plain"><tt>ExportControl</tt></a>
-<span class="moduletype">SourceModule</span>  <div class="import">
-imports:
-    <a href="#PyQt5">PyQt5</a>
- &#8226;   <a href="#PyQt5.QtCore">PyQt5.QtCore</a>
- &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
- &#8226;   <a href="#Ui.ExportWindow">Ui.ExportWindow</a>
- &#8226;   <a href="#numpy">numpy</a>
-
-  </div>
-  <div class="import">
-imported by:
-    <a href="#DataAnalysisTools.py">DataAnalysisTools.py</a>
-
-  </div>
-
-</div>
-
-<div class="node">
-  <a name="FilterControl"></a>
-  <a target="code" href="///E:/DC%E5%AE%9E%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6/dataanalysis/FilterControl.py" type="text/plain"><tt>FilterControl</tt></a>
-<span class="moduletype">SourceModule</span>  <div class="import">
-imports:
-    <a href="#PyQt5">PyQt5</a>
- &#8226;   <a href="#PyQt5.QtCore">PyQt5.QtCore</a>
- &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
- &#8226;   <a href="#Ui.FilterWindow">Ui.FilterWindow</a>
- &#8226;   <a href="#numpy">numpy</a>
- &#8226;   <a href="#scipy">scipy</a>
- &#8226;   <a href="#scipy.signal">scipy.signal</a>
-
-  </div>
-  <div class="import">
-imported by:
-    <a href="#DataAnalysisTools.py">DataAnalysisTools.py</a>
-
-  </div>
-
-</div>
-
-<div class="node">
   <a name="IPython"></a>
   <a target="code" href="" type="text/plain"><tt>IPython</tt></a>
 <span class="moduletype">MissingModule</span>  <div class="import">
@@ -644,6 +601,7 @@ imports:
  &#8226;   <a href="#PIL.ImageSequence">PIL.ImageSequence</a>
  &#8226;   <a href="#PIL.ImageShow">PIL.ImageShow</a>
  &#8226;   <a href="#PIL.ImageTk">PIL.ImageTk</a>
+ &#8226;   <a href="#PIL.Jpeg2KImagePlugin">PIL.Jpeg2KImagePlugin</a>
  &#8226;   <a href="#PIL.JpegImagePlugin">PIL.JpegImagePlugin</a>
  &#8226;   <a href="#PIL.PaletteFile">PIL.PaletteFile</a>
  &#8226;   <a href="#PIL.PdfParser">PIL.PdfParser</a>
@@ -1666,7 +1624,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#PIL.IcnsImagePlugin">PIL.IcnsImagePlugin</a>
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.IcnsImagePlugin">PIL.IcnsImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
 
   </div>
@@ -2490,19 +2449,13 @@ imports:
   <div class="import">
 imported by:
     <a href="#DataAnalysisTools.py">DataAnalysisTools.py</a>
- &#8226;   <a href="#ExportControl">ExportControl</a>
- &#8226;   <a href="#FilterControl">FilterControl</a>
  &#8226;   <a href="#LoadDataControl">LoadDataControl</a>
  &#8226;   <a href="#PyQt5.QtCore">PyQt5.QtCore</a>
  &#8226;   <a href="#PyQt5.QtGui">PyQt5.QtGui</a>
  &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
  &#8226;   <a href="#PyQt5.sip">PyQt5.sip</a>
- &#8226;   <a href="#TimeSettingControl">TimeSettingControl</a>
  &#8226;   <a href="#Ui.DataLoadWindow">Ui.DataLoadWindow</a>
- &#8226;   <a href="#Ui.ExportWindow">Ui.ExportWindow</a>
- &#8226;   <a href="#Ui.FilterWindow">Ui.FilterWindow</a>
  &#8226;   <a href="#Ui.MainWindow">Ui.MainWindow</a>
- &#8226;   <a href="#Ui.TimeSettingWindow">Ui.TimeSettingWindow</a>
  &#8226;   <a href="#Ui.WaitingWindow">Ui.WaitingWindow</a>
  &#8226;   <a href="#Ui.qrc_rc">Ui.qrc_rc</a>
  &#8226;   <a href="#WaitingControl">WaitingControl</a>
@@ -2522,18 +2475,13 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#ExportControl">ExportControl</a>
- &#8226;   <a href="#FilterControl">FilterControl</a>
- &#8226;   <a href="#LoadDataControl">LoadDataControl</a>
+    <a href="#LoadDataControl">LoadDataControl</a>
  &#8226;   <a href="#PyQt5">PyQt5</a>
  &#8226;   <a href="#PyQt5.QtCore">PyQt5.QtCore</a>
  &#8226;   <a href="#PyQt5.QtGui">PyQt5.QtGui</a>
  &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
  &#8226;   <a href="#Ui.DataLoadWindow">Ui.DataLoadWindow</a>
- &#8226;   <a href="#Ui.ExportWindow">Ui.ExportWindow</a>
- &#8226;   <a href="#Ui.FilterWindow">Ui.FilterWindow</a>
  &#8226;   <a href="#Ui.MainWindow">Ui.MainWindow</a>
- &#8226;   <a href="#Ui.TimeSettingWindow">Ui.TimeSettingWindow</a>
  &#8226;   <a href="#Ui.WaitingWindow">Ui.WaitingWindow</a>
  &#8226;   <a href="#Ui.qrc_rc">Ui.qrc_rc</a>
  &#8226;   <a href="#WaitingControl">WaitingControl</a>
@@ -2559,10 +2507,7 @@ imported by:
  &#8226;   <a href="#PyQt5.QtGui">PyQt5.QtGui</a>
  &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
  &#8226;   <a href="#Ui.DataLoadWindow">Ui.DataLoadWindow</a>
- &#8226;   <a href="#Ui.ExportWindow">Ui.ExportWindow</a>
- &#8226;   <a href="#Ui.FilterWindow">Ui.FilterWindow</a>
  &#8226;   <a href="#Ui.MainWindow">Ui.MainWindow</a>
- &#8226;   <a href="#Ui.TimeSettingWindow">Ui.TimeSettingWindow</a>
  &#8226;   <a href="#Ui.WaitingWindow">Ui.WaitingWindow</a>
  &#8226;   <a href="#WaitingControl">WaitingControl</a>
  &#8226;   <a href="#matplotlib.backends.qt_compat">matplotlib.backends.qt_compat</a>
@@ -2585,17 +2530,11 @@ imports:
 imported by:
     <a href="#DataAnalysisTools.py">DataAnalysisTools.py</a>
  &#8226;   <a href="#DynamicTableWidget">DynamicTableWidget</a>
- &#8226;   <a href="#ExportControl">ExportControl</a>
- &#8226;   <a href="#FilterControl">FilterControl</a>
  &#8226;   <a href="#LoadDataControl">LoadDataControl</a>
  &#8226;   <a href="#PyQt5">PyQt5</a>
  &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
- &#8226;   <a href="#TimeSettingControl">TimeSettingControl</a>
  &#8226;   <a href="#Ui.DataLoadWindow">Ui.DataLoadWindow</a>
- &#8226;   <a href="#Ui.ExportWindow">Ui.ExportWindow</a>
- &#8226;   <a href="#Ui.FilterWindow">Ui.FilterWindow</a>
  &#8226;   <a href="#Ui.MainWindow">Ui.MainWindow</a>
- &#8226;   <a href="#Ui.TimeSettingWindow">Ui.TimeSettingWindow</a>
  &#8226;   <a href="#Ui.WaitingWindow">Ui.WaitingWindow</a>
  &#8226;   <a href="#WaitingControl">WaitingControl</a>
  &#8226;   <a href="#matplotlib.backends.qt_compat">matplotlib.backends.qt_compat</a>
@@ -2667,33 +2606,12 @@ imported by:
 </div>
 
 <div class="node">
-  <a name="TimeSettingControl"></a>
-  <a target="code" href="///E:/DC%E5%AE%9E%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6/dataanalysis/TimeSettingControl.py" type="text/plain"><tt>TimeSettingControl</tt></a>
-<span class="moduletype">SourceModule</span>  <div class="import">
-imports:
-    <a href="#PyQt5">PyQt5</a>
- &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
- &#8226;   <a href="#Ui.TimeSettingWindow">Ui.TimeSettingWindow</a>
-
-  </div>
-  <div class="import">
-imported by:
-    <a href="#DataAnalysisTools.py">DataAnalysisTools.py</a>
-
-  </div>
-
-</div>
-
-<div class="node">
   <a name="Ui"></a>
   <a target="code" href="-" type="text/plain"><tt>Ui</tt></a>
 <span class="moduletype">NamespacePackage</span>  <div class="import">
 imported by:
     <a href="#Ui.DataLoadWindow">Ui.DataLoadWindow</a>
- &#8226;   <a href="#Ui.ExportWindow">Ui.ExportWindow</a>
- &#8226;   <a href="#Ui.FilterWindow">Ui.FilterWindow</a>
  &#8226;   <a href="#Ui.MainWindow">Ui.MainWindow</a>
- &#8226;   <a href="#Ui.TimeSettingWindow">Ui.TimeSettingWindow</a>
  &#8226;   <a href="#Ui.WaitingWindow">Ui.WaitingWindow</a>
  &#8226;   <a href="#Ui.qrc_rc">Ui.qrc_rc</a>
 
@@ -2723,48 +2641,6 @@ imported by:
 </div>
 
 <div class="node">
-  <a name="Ui.ExportWindow"></a>
-  <a target="code" href="///E:/DC%E5%AE%9E%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6/dataanalysis/Ui/ExportWindow.py" type="text/plain"><tt>Ui.ExportWindow</tt></a>
-<span class="moduletype">SourceModule</span>  <div class="import">
-imports:
-    <a href="#PyQt5">PyQt5</a>
- &#8226;   <a href="#PyQt5.QtCore">PyQt5.QtCore</a>
- &#8226;   <a href="#PyQt5.QtGui">PyQt5.QtGui</a>
- &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
- &#8226;   <a href="#Ui">Ui</a>
- &#8226;   <a href="#Ui.qrc_rc">Ui.qrc_rc</a>
-
-  </div>
-  <div class="import">
-imported by:
-    <a href="#ExportControl">ExportControl</a>
-
-  </div>
-
-</div>
-
-<div class="node">
-  <a name="Ui.FilterWindow"></a>
-  <a target="code" href="///E:/DC%E5%AE%9E%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6/dataanalysis/Ui/FilterWindow.py" type="text/plain"><tt>Ui.FilterWindow</tt></a>
-<span class="moduletype">SourceModule</span>  <div class="import">
-imports:
-    <a href="#PyQt5">PyQt5</a>
- &#8226;   <a href="#PyQt5.QtCore">PyQt5.QtCore</a>
- &#8226;   <a href="#PyQt5.QtGui">PyQt5.QtGui</a>
- &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
- &#8226;   <a href="#Ui">Ui</a>
- &#8226;   <a href="#Ui.qrc_rc">Ui.qrc_rc</a>
-
-  </div>
-  <div class="import">
-imported by:
-    <a href="#FilterControl">FilterControl</a>
-
-  </div>
-
-</div>
-
-<div class="node">
   <a name="Ui.MainWindow"></a>
   <a target="code" href="///E:/DC%E5%AE%9E%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6/dataanalysis/Ui/MainWindow.py" type="text/plain"><tt>Ui.MainWindow</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
@@ -2780,27 +2656,6 @@ imports:
   <div class="import">
 imported by:
     <a href="#DataAnalysisTools.py">DataAnalysisTools.py</a>
-
-  </div>
-
-</div>
-
-<div class="node">
-  <a name="Ui.TimeSettingWindow"></a>
-  <a target="code" href="///E:/DC%E5%AE%9E%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6/dataanalysis/Ui/TimeSettingWindow.py" type="text/plain"><tt>Ui.TimeSettingWindow</tt></a>
-<span class="moduletype">SourceModule</span>  <div class="import">
-imports:
-    <a href="#PyQt5">PyQt5</a>
- &#8226;   <a href="#PyQt5.QtCore">PyQt5.QtCore</a>
- &#8226;   <a href="#PyQt5.QtGui">PyQt5.QtGui</a>
- &#8226;   <a href="#PyQt5.QtWidgets">PyQt5.QtWidgets</a>
- &#8226;   <a href="#Ui">Ui</a>
- &#8226;   <a href="#Ui.qrc_rc">Ui.qrc_rc</a>
-
-  </div>
-  <div class="import">
-imported by:
-    <a href="#TimeSettingControl">TimeSettingControl</a>
 
   </div>
 
@@ -2839,10 +2694,7 @@ imports:
   <div class="import">
 imported by:
     <a href="#Ui.DataLoadWindow">Ui.DataLoadWindow</a>
- &#8226;   <a href="#Ui.ExportWindow">Ui.ExportWindow</a>
- &#8226;   <a href="#Ui.FilterWindow">Ui.FilterWindow</a>
  &#8226;   <a href="#Ui.MainWindow">Ui.MainWindow</a>
- &#8226;   <a href="#Ui.TimeSettingWindow">Ui.TimeSettingWindow</a>
 
   </div>
 
@@ -5994,8 +5846,8 @@ imported by:
   <a target="code" href="///D:/anaconda3/envs/DataAnalysis/lib/copy.py" type="text/plain"><tt>copy</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#'org.python'">'org.python'</a>
- &#8226;   <a href="#copyreg">copyreg</a>
+    <a href="#copyreg">copyreg</a>
+ &#8226;   <a href="#org">org</a>
  &#8226;   <a href="#types">types</a>
  &#8226;   <a href="#weakref">weakref</a>
 
@@ -6090,7 +5942,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#importlib.metadata">importlib.metadata</a>
+    <a href="#DataAnalysisTools.py">DataAnalysisTools.py</a>
+ &#8226;   <a href="#importlib.metadata">importlib.metadata</a>
 
   </div>
 
@@ -22070,8 +21923,7 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#ExportControl">ExportControl</a>
- &#8226;   <a href="#FilterControl">FilterControl</a>
+    <a href="#DataAnalysisTools.py">DataAnalysisTools.py</a>
  &#8226;   <a href="#LoadDataControl">LoadDataControl</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
  &#8226;   <a href="#PlotControl">PlotControl</a>
@@ -27033,7 +26885,7 @@ imported by:
   <a target="code" href="" type="text/plain"><tt>org</tt></a>
 <span class="moduletype">MissingModule</span>  <div class="import">
 imported by:
-    <a href="#pickle">pickle</a>
+    <a href="#copy">copy</a>
 
   </div>
 
@@ -27378,7 +27230,6 @@ imported by:
 imports:
     <a href="#packaging">packaging</a>
  &#8226;   <a href="#packaging.__about__">packaging.__about__</a>
- &#8226;   <a href="#packaging._manylinux">packaging._manylinux</a>
  &#8226;   <a href="#packaging._musllinux">packaging._musllinux</a>
  &#8226;   <a href="#pkg_resources">pkg_resources</a>
 
@@ -27439,8 +27290,7 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#packaging">packaging</a>
- &#8226;   <a href="#packaging.tags">packaging.tags</a>
+    <a href="#packaging.tags">packaging.tags</a>
  &#8226;   <a href="#pkg_resources">pkg_resources</a>
 
   </div>
@@ -27735,7 +27585,8 @@ imported by:
   <a target="code" href="///D:/anaconda3/envs/DataAnalysis/lib/pickle.py" type="text/plain"><tt>pickle</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#_compat_pickle">_compat_pickle</a>
+    <a href="#'org.python'">'org.python'</a>
+ &#8226;   <a href="#_compat_pickle">_compat_pickle</a>
  &#8226;   <a href="#_pickle">_pickle</a>
  &#8226;   <a href="#codecs">codecs</a>
  &#8226;   <a href="#copyreg">copyreg</a>
@@ -27743,7 +27594,6 @@ imports:
  &#8226;   <a href="#functools">functools</a>
  &#8226;   <a href="#io">io</a>
  &#8226;   <a href="#itertools">itertools</a>
- &#8226;   <a href="#org">org</a>
  &#8226;   <a href="#pprint">pprint</a>
  &#8226;   <a href="#re">re</a>
  &#8226;   <a href="#struct">struct</a>
@@ -27931,6 +27781,7 @@ imports:
  &#8226;   <a href="#pkg_resources._vendor.packaging">pkg_resources._vendor.packaging</a>
  &#8226;   <a href="#pkg_resources._vendor.packaging.__about__">pkg_resources._vendor.packaging.__about__</a>
  &#8226;   <a href="#pkg_resources._vendor.packaging._manylinux">pkg_resources._vendor.packaging._manylinux</a>
+ &#8226;   <a href="#pkg_resources._vendor.packaging._musllinux">pkg_resources._vendor.packaging._musllinux</a>
 
   </div>
   <div class="import">
@@ -28018,6 +27869,7 @@ imports:
   <div class="import">
 imported by:
     <a href="#pkg_resources">pkg_resources</a>
+ &#8226;   <a href="#pkg_resources._vendor.packaging">pkg_resources._vendor.packaging</a>
  &#8226;   <a href="#pkg_resources._vendor.packaging.tags">pkg_resources._vendor.packaging.tags</a>
 
   </div>
@@ -29385,8 +29237,7 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#FilterControl">FilterControl</a>
- &#8226;   <a href="#PlotControl">PlotControl</a>
+    <a href="#PlotControl">PlotControl</a>
  &#8226;   <a href="#scipy">scipy</a>
  &#8226;   <a href="#scipy.__config__">scipy.__config__</a>
  &#8226;   <a href="#scipy._distributor_init">scipy._distributor_init</a>
@@ -33969,8 +33820,7 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#FilterControl">FilterControl</a>
- &#8226;   <a href="#PlotControl">PlotControl</a>
+    <a href="#PlotControl">PlotControl</a>
  &#8226;   <a href="#scipy">scipy</a>
  &#8226;   <a href="#scipy.signal">scipy.signal</a>
  &#8226;   <a href="#scipy.signal._arraytools">scipy.signal._arraytools</a>
