@@ -54,6 +54,7 @@
     </property>
     <addaction name="action_dataload"/>
     <addaction name="action_filter"/>
+    <addaction name="action_coding"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -95,6 +96,11 @@
     <string>数据导出</string>
    </property>
   </action>
+  <action name="action_coding">
+   <property name="text">
+    <string>高速编码</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="qrc.qrc"/>
@@ -133,22 +139,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>action_time</sender>
-   <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>HandlerDrawTime()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>action_waterfall</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
@@ -165,26 +155,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>action_stft</sender>
+   <sender>action_coding</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
-   <slot>HandlerSTFT()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>action_export</sender>
-   <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>HandlerExport()</slot>
+   <slot>HandlerCoding()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -204,5 +178,6 @@
   <slot>HandlerWaterFall()</slot>
   <slot>HandlerSTFT()</slot>
   <slot>HandlerExport()</slot>
+  <slot>HandlerCoding()</slot>
  </slots>
 </ui>

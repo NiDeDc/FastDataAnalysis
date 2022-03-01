@@ -51,22 +51,20 @@ class Ui_MainWindow(object):
         self.action_stft.setObjectName("action_stft")
         self.action_export = QtWidgets.QAction(MainWindow)
         self.action_export.setObjectName("action_export")
+        self.action_coding = QtWidgets.QAction(MainWindow)
+        self.action_coding.setObjectName("action_coding")
         self.menu.addAction(self.action_dataload)
         self.menu.addAction(self.action_filter)
-        self.menu.addAction(self.action_export)
-        self.menu_2.addAction(self.action_time)
+        self.menu.addAction(self.action_coding)
         self.menu_2.addAction(self.action_waterfall)
-        self.menu_2.addAction(self.action_stft)
         self.menubar.addAction(self.menu.menuAction())
         self.menubar.addAction(self.menu_2.menuAction())
 
         self.retranslateUi(MainWindow)
         self.action_dataload.triggered.connect(MainWindow.HandlerLoad)
         self.action_filter.triggered.connect(MainWindow.HandlerFilter)
-        self.action_time.triggered.connect(MainWindow.HandlerDrawTime)
         self.action_waterfall.triggered.connect(MainWindow.HandlerWaterFall)
-        self.action_stft.triggered.connect(MainWindow.HandlerSTFT)
-        self.action_export.triggered.connect(MainWindow.HandlerExport)
+        self.action_coding.triggered.connect(MainWindow.HandlerCoding)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -80,4 +78,5 @@ class Ui_MainWindow(object):
         self.action_waterfall.setText(_translate("MainWindow", "瀑布图"))
         self.action_stft.setText(_translate("MainWindow", "短时傅里叶"))
         self.action_export.setText(_translate("MainWindow", "数据导出"))
+        self.action_coding.setText(_translate("MainWindow", "高速编码"))
 import Ui.qrc_rc

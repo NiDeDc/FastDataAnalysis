@@ -19,33 +19,34 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>设备数量：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QSpinBox" name="spinBox_2">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>通道数量：</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="0" column="3">
     <widget class="QSpinBox" name="spinBox">
      <property name="minimum">
       <number>1</number>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>57</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="1">
+   <item row="1" column="0" colspan="4">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>

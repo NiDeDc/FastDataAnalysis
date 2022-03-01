@@ -30,19 +30,23 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.table.clear()
             self.ldc.joint_data.clear()
             self.ldc.is_run.clear()
+            dev = self.ldc.spinBox_2.value()
+            ch = self.ldc.spinBox.value()
             file_names = []
-            for i in range(0, self.ldc.spinBox.value()):
-                filename = QtWidgets.QFileDialog.getOpenFileNames(self, '通道' + str(i + 1), '', 'FLData(*.bin)')[0]
-                if len(filename) == 0:
-                    break
-                file_names.append([i, filename])
-            for i in file_names:
-                t = threading.Thread(target=self.ldc.LoadData, args=(i[1], i[0]))
-                self.ldc.is_run.append(True)
-                self.ldc.joint_data.append(None)
-                self.ldc.threads.append(t)
-                t.setDaemon(True)
-                t.start()
+            for i in range(0, dev):
+                for j in range(0, ch):
+                    filename = QtWidgets.QFileDialog.getOpenFileNames(self, '设备' + str(i + 1) + '通道' + str(j + 1), ''
+                                                                      , 'FLData(*.bin)')[0]
+                    if len(filename) == 0:
+                        self.ldc.is_run.append(False)
+                        break
+                    file_names.append(filename)
+                    t = threading.Thread(target=self.ldc.LoadData, args=(filename, i * ch + j))
+                    self.ldc.is_run.append(True)
+                    self.ldc.joint_data.append(None)
+                    self.ldc.threads.append(t)
+                    t.setDaemon(True)
+                    t.start()
             if len(file_names) > 0:
                 self.is_load = False
                 self.wait.show()
@@ -58,14 +62,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             num = len(all_data)
             if num > 0:
                 for i in range(0, num):
-                    table_w = dtw(i)
-                    table_w.menu.addAction(self.action_stft)
-                    self.table.append(table_w)
-                    self.tabWidget_tab.addTab(table_w, '通道' + str(i + 1))
-                    if all_data[i] is not None:
-                        table_w.LoadData(all_data[i])
-                    else:
-                        QtWidgets.QMessageBox.critical(self, "错误", '通道' + str(i + 1) + "解析错误，请检查文件名和光栅序号是否一致")
+                    # table_w = dtw(i)
+                    # table_w.menu.addAction(self.action_stft)
+                    # self.table.append(table_w)
+                    # self.tabWidget_tab.addTab(table_w, '通道' + str(i + 1))
+                    if all_data[i] is None:
+                        ch = self.ldc.spinBox.value()
+                        reu = divmod(i, ch)
+                        QtWidgets.QMessageBox.critical(self, "错误", '仪表' + str(reu[0] + 1) + '通道' + str(reu[1] + 1)
+                                                       + "解析错误，请检查文件名和光栅序号是否一致")
+                QtWidgets.QMessageBox.information(self, "提示", '加载成功')
 
     def HandlerFilter(self):
         index = self.tabWidget_tab.currentIndex()
@@ -77,6 +83,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 t.setDaemon(True)
                 t.start()
 
+    def HandlerCoding(self):
+        pass
+
     def FilterFinish(self):
         index = self.tabWidget_tab.currentIndex()
         self.table[index].clear()
@@ -84,23 +93,23 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.table[index].UpdateData()
         self.wait.close()
 
-    def HandlerDrawTime(self):
-        c_num = len(self.table)
-        if c_num > 0:
-            sensor = []
-            data = []
-            t = tsc(c_num)
-            if t.exec() == 1:
-                group = t.group
-                for i in range(0, len(group)):
-                    if group[i][0].isChecked() and self.table[i].data is not None:
-                        sensor_c = []
-                        for j in group[i][1]:
-                            sensor_s = [j[0].value(), j[1].value(), j[2].value()]
-                            sensor_c.append(sensor_s)
-                        sensor.append([self.table[i].id, sensor_c])
-                        data.append(self.table[i].data)
-                Plc.DrawTimeDomains(data, sensor)
+    # def HandlerDrawTime(self):
+    #     c_num = len(self.table)
+    #     if c_num > 0:
+    #         sensor = []
+    #         data = []
+    #         t = tsc(c_num)
+    #         if t.exec() == 1:
+    #             group = t.group
+    #             for i in range(0, len(group)):
+    #                 if group[i][0].isChecked() and self.table[i].data is not None:
+    #                     sensor_c = []
+    #                     for j in group[i][1]:
+    #                         sensor_s = [j[0].value(), j[1].value(), j[2].value()]
+    #                         sensor_c.append(sensor_s)
+    #                     sensor.append([self.table[i].id, sensor_c])
+    #                     data.append(self.table[i].data)
+    #             Plc.DrawTimeDomains(data, sensor)
 
     def HandlerWaterFall(self):
         index = self.tabWidget_tab.currentIndex()
@@ -109,17 +118,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             if data is not None:
                 Plc.DrawWaterFall(data)
 
-    def HandlerSTFT(self):
-        index = self.tabWidget_tab.currentIndex()
-        if index != -1:
-            data = self.table[index].data
-            if data is not None:
-                ranges = self.table[index].selectedRanges()
-                sensor = 0
-                for i in ranges:
-                    sensor = i.topRow()
-                    break
-                Plc.DrawSTFT(data, 1000, sensor)
+    # def HandlerSTFT(self):
+    #     index = self.tabWidget_tab.currentIndex()
+    #     if index != -1:
+    #         data = self.table[index].data
+    #         if data is not None:
+    #             ranges = self.table[index].selectedRanges()
+    #             sensor = 0
+    #             for i in ranges:
+    #                 sensor = i.topRow()
+    #                 break
+    #             Plc.DrawSTFT(data, 1000, sensor)
 
     # def HandlerExport(self):
     #     c_num = len(self.table)
@@ -138,8 +147,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     #             t.start()
     #             self.wait.show()
 
-    def ExportFinish(self):
-        self.wait.close()
+    # def ExportFinish(self):
+    #     self.wait.close()
 
 
 if __name__ == "__main__":
