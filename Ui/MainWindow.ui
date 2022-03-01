@@ -54,15 +54,12 @@
     </property>
     <addaction name="action_dataload"/>
     <addaction name="action_filter"/>
-    <addaction name="action_export"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
      <string>绘图控制</string>
     </property>
-    <addaction name="action_time"/>
     <addaction name="action_waterfall"/>
-    <addaction name="action_stft"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>

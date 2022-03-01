@@ -121,22 +121,22 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     break
                 Plc.DrawSTFT(data, 1000, sensor)
 
-    def HandlerExport(self):
-        c_num = len(self.table)
-        index = self.tabWidget_tab.currentIndex()
-        if c_num > 0:
-            epc = ExportControl()
-            epc.finish.connect(self.ExportFinish)
-            if epc.exec() == 1 and self.table[index].data is not None:
-                group = epc.group
-                file_index = []
-                for i in group:
-                    file_index_s = [i[0].value(), i[1].value(), i[2].value(), i[3].value()]
-                    file_index.append(file_index_s)
-                t = threading.Thread(target=epc.SaveData, args=(self.table[index].data, file_index))
-                t.setDaemon(True)
-                t.start()
-                self.wait.show()
+    # def HandlerExport(self):
+    #     c_num = len(self.table)
+    #     index = self.tabWidget_tab.currentIndex()
+    #     if c_num > 0:
+    #         epc = ExportControl()
+    #         epc.finish.connect(self.ExportFinish)
+    #         if epc.exec() == 1 and self.table[index].data is not None:
+    #             group = epc.group
+    #             file_index = []
+    #             for i in group:
+    #                 file_index_s = [i[0].value(), i[1].value(), i[2].value(), i[3].value()]
+    #                 file_index.append(file_index_s)
+    #             t = threading.Thread(target=epc.SaveData, args=(self.table[index].data, file_index))
+    #             t.setDaemon(True)
+    #             t.start()
+    #             self.wait.show()
 
     def ExportFinish(self):
         self.wait.close()
