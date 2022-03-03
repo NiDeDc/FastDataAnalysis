@@ -24,7 +24,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.table = []  # 表格数组
         self.wait = WaitingControl()
         self.is_load = False
-        self.code_data = [None, None, None, None]
+        self.code_data = [None, None, None, None, None, None, None, None]
         self.dev = 1
         self.ch = 1
 
@@ -34,6 +34,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.tabWidget_tab.removeTab(0)  # 每次remove后剩下的index提前
             self.table.clear()
             self.ldc.joint_data.clear()
+            self.code_data = [None, None, None, None, None, None, None, None]
             self.ldc.is_run.clear()
             self.dev = self.ldc.spinBox_2.value()
             self.ch = self.ldc.spinBox.value()
@@ -114,11 +115,31 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     self.code_data[2] = all_data[index][sensor]
                 else:
                     self.code_data[2] = np.vstack((self.code_data[2], all_data[index][sensor]))
-            elif item[0] == 'Z3':
+            elif item[0] == 'Y4':
                 if self.code_data[3] is None:
                     self.code_data[3] = all_data[index][sensor]
                 else:
                     self.code_data[3] = np.vstack((self.code_data[3], all_data[index][sensor]))
+            elif item[0] == 'Z1':
+                if self.code_data[4] is None:
+                    self.code_data[4] = all_data[index][sensor]
+                else:
+                    self.code_data[4] = np.vstack((self.code_data[4], all_data[index][sensor]))
+            elif item[0] == 'Z2':
+                if self.code_data[5] is None:
+                    self.code_data[5] = all_data[index][sensor]
+                else:
+                    self.code_data[5] = np.vstack((self.code_data[5], all_data[index][sensor]))
+            elif item[0] == 'Z3':
+                if self.code_data[6] is None:
+                    self.code_data[6] = all_data[index][sensor]
+                else:
+                    self.code_data[6] = np.vstack((self.code_data[6], all_data[index][sensor]))
+            elif item[0] == 'Z4':
+                if self.code_data[7] is None:
+                    self.code_data[7] = all_data[index][sensor]
+                else:
+                    self.code_data[7] = np.vstack((self.code_data[7], all_data[index][sensor]))
             else:
                 pass
         table_1 = dtw(0)
@@ -128,7 +149,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         table_3 = dtw(2)
         self.tabWidget_tab.addTab(table_3, 'Y3')
         table_4 = dtw(3)
-        self.tabWidget_tab.addTab(table_4, 'Z3')
+        self.tabWidget_tab.addTab(table_4, 'Y4')
+        table_5 = dtw(4)
+        self.tabWidget_tab.addTab(table_5, 'Z1')
+        table_6 = dtw(5)
+        self.tabWidget_tab.addTab(table_6, 'Z2')
+        table_7 = dtw(6)
+        self.tabWidget_tab.addTab(table_7, 'Z3')
+        table_8 = dtw(7)
+        self.tabWidget_tab.addTab(table_8, 'Z4')
 
     def FilterFinish(self):
         pass
