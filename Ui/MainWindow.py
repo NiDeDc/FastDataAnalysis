@@ -53,9 +53,12 @@ class Ui_MainWindow(object):
         self.action_export.setObjectName("action_export")
         self.action_coding = QtWidgets.QAction(MainWindow)
         self.action_coding.setObjectName("action_coding")
+        self.action_export_2 = QtWidgets.QAction(MainWindow)
+        self.action_export_2.setObjectName("action_export_2")
         self.menu.addAction(self.action_dataload)
         self.menu.addAction(self.action_filter)
         self.menu.addAction(self.action_coding)
+        self.menu.addAction(self.action_export_2)
         self.menu_2.addAction(self.action_waterfall)
         self.menubar.addAction(self.menu.menuAction())
         self.menubar.addAction(self.menu_2.menuAction())
@@ -65,6 +68,7 @@ class Ui_MainWindow(object):
         self.action_filter.triggered.connect(MainWindow.HandlerFilter)
         self.action_waterfall.triggered.connect(MainWindow.HandlerWaterFall)
         self.action_coding.triggered.connect(MainWindow.HandlerCoding)
+        self.action_export_2.triggered.connect(MainWindow.HandlerExport)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -79,4 +83,5 @@ class Ui_MainWindow(object):
         self.action_stft.setText(_translate("MainWindow", "短时傅里叶"))
         self.action_export.setText(_translate("MainWindow", "数据导出"))
         self.action_coding.setText(_translate("MainWindow", "高速编码"))
+        self.action_export_2.setText(_translate("MainWindow", "数据导出"))
 import Ui.qrc_rc

@@ -55,6 +55,7 @@
     <addaction name="action_dataload"/>
     <addaction name="action_filter"/>
     <addaction name="action_coding"/>
+    <addaction name="action_export_2"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -99,6 +100,11 @@
   <action name="action_coding">
    <property name="text">
     <string>高速编码</string>
+   </property>
+  </action>
+  <action name="action_export_2">
+   <property name="text">
+    <string>数据导出</string>
    </property>
   </action>
  </widget>
@@ -159,6 +165,22 @@
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>HandlerCoding()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>545</x>
+     <y>423</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_export_2</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>HandlerExport()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>

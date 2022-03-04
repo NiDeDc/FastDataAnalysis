@@ -204,22 +204,46 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     #                 break
     #             Plc.DrawSTFT(data, 1000, sensor)
 
-    # def HandlerExport(self):
-    #     c_num = len(self.table)
-    #     index = self.tabWidget_tab.currentIndex()
-    #     if c_num > 0:
-    #         epc = ExportControl()
-    #         epc.finish.connect(self.ExportFinish)
-    #         if epc.exec() == 1 and self.table[index].data is not None:
-    #             group = epc.group
-    #             file_index = []
-    #             for i in group:
-    #                 file_index_s = [i[0].value(), i[1].value(), i[2].value(), i[3].value()]
-    #                 file_index.append(file_index_s)
-    #             t = threading.Thread(target=epc.SaveData, args=(self.table[index].data, file_index))
-    #             t.setDaemon(True)
-    #             t.start()
-    #             self.wait.show()
+    def HandlerExport(self):
+        index = self.tabWidget_tab.currentIndex()
+        if index != -1:
+            if index == 0:
+                data = self.code_data[0]
+                cum = data.shape[0]
+                file_name = 'Y-1-' + 'P' + str(cum)
+            elif index == 1:
+                data = self.code_data[1]
+                cum = data.shape[0]
+                file_name = 'Y-2-' + 'P' + str(cum)
+            elif index == 2:
+                data = self.code_data[2]
+                cum = data.shape[0]
+                file_name = 'Y-3-' + 'P' + str(cum)
+            elif index == 3:
+                data = self.code_data[3]
+                cum = data.shape[0]
+                file_name = 'Y-4-' + 'P' + str(cum)
+            elif index == 4:
+                data = self.code_data[4]
+                cum = data.shape[0]
+                file_name = 'Z-1-' + 'P' + str(cum)
+            elif index == 5:
+                data = self.code_data[5]
+                cum = data.shape[0]
+                file_name = 'Z-2-' + 'P' + str(cum)
+            elif index == 6:
+                data = self.code_data[6]
+                cum = data.shape[0]
+                file_name = 'Z-3-' + 'P' + str(cum)
+            elif index == 7:
+                data = self.code_data[7]
+                cum = data.shape[0]
+                file_name = 'Z-4-' + 'P' + str(cum)
+            else:
+                return
+            if data.dtype != np.dtype('float32'):
+                data = data.astype('float32')
+            data.tofile(file_name + '.bin')
 
     # def ExportFinish(self):
     #     self.wait.close()
