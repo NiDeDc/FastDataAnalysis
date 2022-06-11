@@ -37,7 +37,7 @@ def DrawWaterFall(data):
     figure += 1
     plt.suptitle('瀑布图')
     source = abs(np.array(data).T)
-    plt.imshow(source, cmap='turbo', aspect='auto')
+    plt.imshow(source, cmap='turbo', aspect='auto', vmax=2)
     plt.colorbar()
     # plt.get_current_fig_manager().window.state('zoomed')
     # plt.subplots_adjust(left=0.04, bottom=None, right=0.96, top=None, wspace=None, hspace=0.5)
