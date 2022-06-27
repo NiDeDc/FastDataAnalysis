@@ -10,7 +10,7 @@ class WaitingControl(QtWidgets.QWidget, Ui_window):
         super(WaitingControl, self).__init__()
         self.setupUi(self)
         self.setFixedSize(500, 550)
-        self.movie = QMovie('wait.gif')
+        self.movie = QMovie('./image/wait.gif')
         self.movie.setScaledSize(QSize(500, 500))
         # self.label_wait = QtWidgets.QLabel(self)
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.Dialog | Qt.WindowStaysOnTopHint)
