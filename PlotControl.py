@@ -23,7 +23,7 @@ def DrawTimeDomains(data, sensor):
             ax = plt.subplot(row, col, j * col + i + 1)
             plt.sca(ax)
             plt.plot(x, single_data)
-            # plt.ylim(-2, 2)
+            # plt.ylim(-1, 1)
             plt.title('通道' + str(sensor[i][0] + 1) + ' #' + str(number) + '光栅时域图')
     # plt.get_current_fig_manager().window.state('zoomed')
     plt.subplots_adjust(left=0.04, bottom=0.05, right=0.98, top=0.93, wspace=0.2, hspace=0.5)

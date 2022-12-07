@@ -36,7 +36,10 @@ class DynamicTableWidget(QTableWidget):
         self.data = data
         s = self.data.shape
         self.setRowCount(s[0])
-        self.setColumnCount(s[1])
+        if s[1] > 300000:
+            self.setColumnCount(300000)
+        else:
+            self.setColumnCount(s[1])
         self.CalculatePerNum()
         self.UpdateData()
 
