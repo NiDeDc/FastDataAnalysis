@@ -8,7 +8,10 @@ from PyQt5.QtCore import pyqtSignal
 def LoadSingleFile(path):
     try:
         col = int(os.path.split(path)[1].split('_')[2][1:])
-        bin_file = np.fromfile(path, dtype=np.float32)
+        if "8byte" in os.path.split(path)[1]:
+            bin_file = np.fromfile(path, dtype=np.uint8)
+        else:
+            bin_file = np.fromfile(path, dtype=np.float32)
         size = len(bin_file)
         row = int(size / col)
         data_array = bin_file.reshape((row, col))
